@@ -323,6 +323,7 @@ Cloudflare is a popular service that offers a Content Delivery Network (CDN), Do
 In this tutorial, you will deploy a static website using the AWS and Cloudflare providers. The site will use AWS to provision an S3 bucket for object storage and Cloudflare for DNS, SSL and CDN. Then, you will add Cloudflare page rules to always redirect HTTP requests to HTTPS and to temporarily redirect users when they visit a specific page.
 
 This diagram shows how users interact with CloudFlare and S3 bucket
+https://mktg-content-api-hashicorp.vercel.app/api/assets?product=tutorials&version=main&asset=public%2Fimg%2Fterraform%2Fuse-cases%2Fcloudflare-static-website%2Fstatic-website-service-diagram.png
 
 ## Prerequisites
 
@@ -343,6 +344,8 @@ There are several ways to authenticate the Terraform Cloudflare provider. In thi
 This tutorial requires a Cloudflare API token with "Edit" permissions for your zone's DNS and Page Rules. If you would like to use an existing Cloudflare API token that already has these permissions, you can go to the Clone the sample repository section.
 
 To create this scoped Cloudflare API token, go to the "API Tokens" page for your Cloudflare account. You can access this page by clicking on the user icon on the top right corner > "My Profile" > "API Tokens".
+
+https://mktg-content-api-hashicorp.vercel.app/api/assets?product=tutorials&version=main&asset=public%2Fimg%2Fterraform%2Fuse-cases%2Fcloudflare-static-website%2Fcloudflare-api-token-page.png
 
 - Cloudflare API token page
 
