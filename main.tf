@@ -90,14 +90,6 @@ resource "cloudflare_record" "www" {
   proxied = true
 }
 
-resource "cloudflare_page_rule" "https" {
-  zone_id = data.cloudflare_zones.domain.zones[0].id
-  target  = "*.${var.site_domain}/*"
-  actions {
-    always_use_https = true
-  }
-}
-
 resource "cloudflare_page_rule" "redirect-to-learn" {
   zone_id = data.cloudflare_zones.domain.zones[0].id
   target  = "${var.site_domain}/learn"
@@ -105,6 +97,17 @@ resource "cloudflare_page_rule" "redirect-to-learn" {
     forwarding_url {
       status_code = 302
       url         = "https://learn.hashicorp.com/terraform"
+    }
+  }
+}
+
+resource "cloudflare_page_rule" "redirect-to-hashicorp" {
+  zone_id = data.cloudflare_zones.domain.zones[0].id
+  target  = "${var.site_domain}/hello"
+  actions {
+    forwarding_url {
+      status_code = 302
+      url         = "https://hashicorp.com"
     }
   }
 }
