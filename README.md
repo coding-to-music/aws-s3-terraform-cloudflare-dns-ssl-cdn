@@ -19,8 +19,7 @@ The [`acm-cloudfront`](https://github.com/hashicorp/learn-terraform-cloudflare-s
 ## Environment Values
 
 ```java
-.
-.
+
 ```
 
 ## GitHub

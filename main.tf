@@ -129,6 +129,8 @@ resource "cloudflare_access_application" "staging_app" {
 
 # oauth
 resource "cloudflare_access_identity_provider" "github_oauth" {
+  # zone_id = data.cloudflare_zones.domain.zones[0].id
+  account_id = var.cloudflare_account_id
   name       = "GitHub OAuth"
   type       = "github"
   config {
