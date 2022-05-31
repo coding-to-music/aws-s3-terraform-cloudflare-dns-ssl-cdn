@@ -122,18 +122,18 @@ resource "cloudflare_access_application" "staging_app" {
 }
 
 # one time pin
-resource "cloudflare_access_identity_provider" "pin_login" {
-  name       = "PIN login"
-  type       = "onetimepin"
-}
+# resource "cloudflare_access_identity_provider" "pin_login" {
+#   name       = "PIN login"
+#   type       = "onetimepin"
+# }
 
 # oauth
 resource "cloudflare_access_identity_provider" "github_oauth" {
   name       = "GitHub OAuth"
   type       = "github"
   config {
-    client_id     = "example"
-    client_secret = "secret_key"
+    client_id     = var.GITHUB_ID
+    client_secret = var.GITHUB_SECRET
   }
 }
 

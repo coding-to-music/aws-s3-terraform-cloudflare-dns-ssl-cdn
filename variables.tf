@@ -23,3 +23,13 @@ variable "cloudflare_account_id" {
   type        = string
   description = "The account_id to use for the argo tunnel site"
 }
+
+variable "GITHUB_ID" {
+  type        = string
+  description = "The GITHUB_ID to use for the GitHub AUTH"
+}
+
+variable "GITHUB_SECRET" {
+  type        = string
+  description = "The account_id to use for the GitHub AUTH"
+}
