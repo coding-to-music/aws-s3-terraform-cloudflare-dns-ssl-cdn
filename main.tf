@@ -111,3 +111,4 @@ resource "cloudflare_page_rule" "redirect-to-hashicorp" {
     }
   }
 }
+
