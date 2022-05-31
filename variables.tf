@@ -8,3 +8,18 @@ variable "site_domain" {
   type        = string
   description = "The domain name to use for the static site"
 }
+
+variable "staging_domain" {
+  type        = string
+  description = "The staging domain name to use for the staging site"
+}
+
+variable "argo_subdomain" {
+  type        = string
+  description = "The subdomain name to use for the argo tunnel site"
+}
+
+variable "cloudflare_account_id" {
+  type        = string
+  description = "The account_id to use for the argo tunnel site"
+}

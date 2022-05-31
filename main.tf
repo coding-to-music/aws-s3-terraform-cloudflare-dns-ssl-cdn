@@ -112,3 +112,45 @@ resource "cloudflare_page_rule" "redirect-to-hashicorp" {
   }
 }
 
+resource "cloudflare_access_application" "staging_app" {
+  zone_id = data.cloudflare_zones.domain.zones[0].id
+  name                      = "staging application"
+  domain                    = var.staging_domain
+  # type                      = "self_hosted"
+  session_duration          = "24h"
+  auto_redirect_to_identity = false
+}
+
+# one time pin
+resource "cloudflare_access_identity_provider" "pin_login" {
+  name       = "PIN login"
+  type       = "onetimepin"
+}
+
+# oauth
+resource "cloudflare_access_identity_provider" "github_oauth" {
+  name       = "GitHub OAuth"
+  type       = "github"
+  config {
+    client_id     = "example"
+    client_secret = "secret_key"
+  }
+}
+
+resource "random_id" "argo_secret" {
+  byte_length = 35
+}
+
+resource "cloudflare_argo_tunnel" "argo_tunnel" {
+  account_id = var.cloudflare_account_id
+  name       = "${var.argo_subdomain}-tunnel"
+  secret     = random_id.argo_secret.b64_std
+}
+
+resource "cloudflare_record" "http_app" {
+  zone_id = data.cloudflare_zones.domain.zones[0].id
+  name    = var.argo_subdomain
+  value   = "${cloudflare_argo_tunnel.argo_tunnel.id}.cfargotunnel.com"
+  type    = "CNAME"
+  proxied = true
+}

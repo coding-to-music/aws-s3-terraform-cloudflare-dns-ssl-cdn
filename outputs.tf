@@ -12,3 +12,8 @@ output "domain_name" {
   description = "Website endpoint"
   value       = var.site_domain
 }
+
+output "staging_domain" {
+  description = "Website endpoint"
+  value       = var.staging_domain
+}
